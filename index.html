@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OneGrade Foods - Pure Stone Ground Spices</title>
   <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 15px; background: #fdfaf6; color: #333; }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 15px; background: #fdfaf6; color: #333; }
     header { text-align: center; padding: 15px 0; border-bottom: 2px solid #b33927; }
-    h1 { margin: 0; color: #b33927; }
-    .tagline { font-size: 14px; color: #666; margin-top: 5px; }
-    .card { background: #fff; padding: 18px; border-radius: 8px; margin: 15px auto; max-width: 480px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
-    label { font-weight: bold; font-size: 14px; }
-    select, input, textarea { width: 100%; padding: 11px; margin-top: 6px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 15px; }
+    h1 { margin: 0; color: #b33927; font-size: 24px; }
+    .tagline { font-size: 13px; color: #666; margin-top: 5px; }
+    .card { background: #fff; padding: 16px; border-radius: 8px; margin: 15px auto; max-width: 480px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+    label { font-weight: bold; font-size: 14px; display: block; margin-top: 10px; }
+    select, input, textarea { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-size: 15px; }
     .total-box { background: #fbeee8; padding: 12px; border-radius: 6px; text-align: center; margin: 15px 0; border: 1px solid #f2c7b5; }
-    .total-price { font-size: 20px; font-weight: bold; color: #b33927; }
-    .btn { background: #25d366; color: white; border: none; padding: 14px; width: 100%; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+    .total-price { font-size: 22px; font-weight: bold; color: #b33927; }
+    .btn { background: #25d366; color: white; border: none; padding: 14px; width: 100%; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 10px; }
     .btn:hover { background: #1eb956; }
-    .badge { background: #e8f5e9; color: #2e7d32; padding: 8px; border-radius: 5px; font-size: 13px; margin-bottom: 15px; text-align: center; font-weight: bold; border: 1px solid #c8e6c9; }
+    .badge { background: #e8f5e9; color: #2e7d32; padding: 8px; border-radius: 5px; font-size: 13px; margin-bottom: 12px; text-align: center; font-weight: bold; border: 1px solid #c8e6c9; }
   </style>
 </head>
 <body>
@@ -27,122 +27,101 @@
   </header>
 
   <div class="card">
-    <div class="badge">🚚 Free / Fast Doorstep Delivery in Bathinda & 50km radius</div>
+    <div class="badge">Free / Fast Doorstep Delivery in Bathinda & 50km radius</div>
     
-    <label>ਆਰਡਰ ਦੀ ਕਿਸਮ (Order Type):</label>
+    <label for="orderType">Order Type:</label>
     <select id="orderType" onchange="calculateTotal()">
-      <option value="Retail">Retail (ਘਰੇਲੂ ਵਰਤੋਂ)</option>
-      <option value="Bulk">Bulk / Wholesale (ਦੁਕਾਨ / ਰੈਸਟੋਰੈਂਟ)</option>
+      <option value="Retail">Retail (Ghar de lai)</option>
+      <option value="Bulk">Bulk / Wholesale (Dukan / Hotel)</option>
     </select>
 
-    <br><br>
-    <label>ਮਸਾਲਾ ਚੁਣੋ (Select Spice):</label>
+    <label for="product">Select Spice:</label>
     <select id="product" onchange="calculateTotal()">
-      <option value="Haldi Powder (Turmeric)" data-price="260">ਹਲਦੀ ਪਾਊਡਰ (Haldi) - ₹260/kg</option>
-      <option value="Mirch Powder (Red Chilli)" data-price="320">ਲਾਲ ਮਿਰਚ (Red Chilli) - ₹320/kg</option>
-      <option value="Dhaniya Powder (Coriander)" data-price="240">ਧਨੀਆ ਪਾਊਡਰ (Dhaniya) - ₹240/kg</option>
-      <option value="Garam Masala Blend" data-price="650">ਗਰਮ ਮਸਾਲਾ (Special Blend) - ₹650/kg</option>
+      <option value="Haldi Powder" data-price="260">Haldi Powder - Rs 260/kg</option>
+      <option value="Mirch Powder" data-price="320">Mirch Powder - Rs 320/kg</option>
+      <option value="Dhaniya Powder" data-price="240">Dhaniya Powder - Rs 240/kg</option>
+      <option value="Garam Masala" data-price="650">Garam Masala Special - Rs 650/kg</option>
     </select>
 
-    <br><br>
-    <label>ਮਾਤਰਾ (Quantity in Kg):</label>
-    <input type="number" id="qty" min="1" value="1" oninput="calculateTotal()">
+    <label for="qty">Quantity (in Kg):</label>
+    <input type="number" id="qty" min="1" value="1" oninput="calculateTotal()" onchange="calculateTotal()">
 
     <div class="total-box">
-      ਕੁੱਲ ਰਕਮ: <span class="total-price" id="totalDisplay">₹260</span>
+      Kul Rakam: <span class="total-price" id="totalDisplay">Rs 260</span>
     </div>
   </div>
 
   <div class="card">
-    <h3 style="margin-top: 0; color: #b33927;">ਡਿਲੀਵਰੀ ਵੇਰਵਾ (Customer Details)</h3>
-    <label>ਤੁਹਾਡਾ ਨਾਮ:</label>
-    <input type="text" id="custName" placeholder="ਪੂਰਾ ਨਾਮ" required><br><br>
+    <h3 style="margin-top: 0; color: #b33927;">Customer Details</h3>
     
-    <label>ਮੋਬਾਈਲ ਨੰਬਰ:</label>
-    <input type="tel" id="custPhone" placeholder="ਫ਼ੋਨ ਨੰਬਰ" required><br><br>
+    <label for="custName">Pura Naam:</label>
+    <input type="text" id="custName" placeholder="Tuhada Naam">
     
-    <label>ਪੂਰਾ ਪਤਾ (Delivery Address):</label>
-    <textarea id="custAddress" placeholder="ਗਲੀ, ਮੁਹੱਲਾ/ਪਿੰਡ, ਸ਼ਹਿਰ (Bathinda ਜਾਂ 50km ਦੇ ਅੰਦਰ)" rows="3" required></textarea><br><br>
+    <label for="custPhone">Mobile Number:</label>
+    <input type="tel" id="custPhone" placeholder="Mobile Number">
     
-    <button class="btn" onclick="sendOrder()">ਆਰਡਰ ਅਤੇ ਪੇਮੈਂਟ ਕਰੋ (Order via WhatsApp)</button>
+    <label for="custAddress">Pura Pata (Address):</label>
+    <textarea id="custAddress" placeholder="Gali, Mohalla/Pind, Bathinda ya 50km da area" rows="3"></textarea>
+    
+    <button type="button" class="btn" onclick="sendOrder()">Order via WhatsApp</button>
   </div>
 
   <script>
     function calculateTotal() {
-      const productSelect = document.getElementById('product');
-      const pricePerKg = parseFloat(productSelect.options[productSelect.selectedIndex].getAttribute('data-price'));
-      const qty = parseFloat(document.getElementById('qty').value) || 0;
-      const orderType = document.getElementById('orderType').value;
+      var productSelect = document.getElementById('product');
+      var selectedOption = productSelect.options[productSelect.selectedIndex];
+      var pricePerKg = parseFloat(selectedOption.getAttribute('data-price')) || 0;
+      var qtyInput = document.getElementById('qty').value;
+      var qty = parseFloat(qtyInput) || 0;
+      var orderType = document.getElementById('orderType').value;
       
-      let total = pricePerKg * qty;
-      // ਬਲਕ ਆਰਡਰ (10kg ਜਾਂ ਵੱਧ) 'ਤੇ 10% ਛੋਟ
+      var total = pricePerKg * qty;
+      
+      // Bulk order 10kg ya zyada hone par 10% discount
       if (orderType === "Bulk" && qty >= 10) {
         total = total * 0.90;
       }
       
-      document.getElementById('totalDisplay').innerText = ₹${Math.round(total)};
-      return Math.round(total);
+      total = Math.round(total);
+      document.getElementById('totalDisplay').innerText = "Rs " + total;
+      return total;
     }
 
-    async function sendOrder() {
-      const name = document.getElementById('custName').value.trim();
-      const phone = document.getElementById('custPhone').value.trim();
-      const address = document.getElementById('custAddress').value.trim();
-      const product = document.getElementById('product').value;
-      const qty = document.getElementById('qty').value;
-      const orderType = document.getElementById('orderType').value;
-      const total = calculateTotal();
+    function sendOrder() {
+      var name = document.getElementById('custName').value.trim();
+      var phone = document.getElementById('custPhone').value.trim();
+      var address = document.getElementById('custAddress').value.trim();
+      var product = document.getElementById('product').value;
+      var qty = document.getElementById('qty').value;
+      var orderType = document.getElementById('orderType').value;
+      var total = calculateTotal();
 
       if (!name || !phone || !address) {
-        alert("ਕਿਰਪਾ ਕਰਕੇ ਨਾਮ, ਫ਼ੋਨ ਨੰਬਰ ਅਤੇ ਪਤਾ ਭਰੋ।");
+        alert("Kripya karke Naam, Phone Number aur Address pura bharo!");
         return;
       }
 
-      // 1. Google Sheets ਆਟੋਮੇਸ਼ਨ (ਜੇਕਰ Apps Script URL ਹੈ ਤਾਂ ਇੱਥੇ ਪਾਓ)
-      const scriptURL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
-
-      if (scriptURL !== "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE") {
-        const orderData = {
-          name: name,
-          phone: phone,
-          address: address,
-          orderType: orderType,
-          product: product,
-          qty: qty,
-          total: total
-        };
-
-        try {
-          fetch(scriptURL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(orderData)
-          });
-        } catch (err) {
-          console.error("Sheet Error:", err);
-        }
-      }
-
-      // 2. WhatsApp ਮੈਸੇਜ ਅਤੇ UPI ਪੇਮੈਂਟ ਲਿੰਕ
-      const businessNumber = "919115157413";
+      var businessNumber = "919115157413";
       
-      const message = *ਨਵਾਂ ਆਰਡਰ - OneGrade Foods*%0A +
-                      ----------------------------%0A +
-                      *ਗਾਹਕ ਦਾ ਨਾਮ:* ${name}%0A +
-                      *ਫ਼ੋਨ ਨੰਬਰ:* ${phone}%0A +
-                      *ਪਤਾ:* ${address}%0A +
-                      *ਏਰੀਆ:* Bathinda & Surrounding 50km%0A +
-                      ----------------------------%0A +
-                      *ਆਰਡਰ ਟਾਈਪ:* ${orderType}%0A +
-                      *ਸਾਮਾਨ:* ${product}%0A +
-                      *ਮਾਤਰਾ:* ${qty} Kg%0A +
-                      *ਕੁੱਲ ਰਕਮ:* ₹${total}%0A +
-                      ----------------------------%0A +
-                      *ਪੇਮੈਂਟ ਲਿੰਕ (UPI):* upi://pay?pa=9115157413@upi&pn=OneGradeFoods&am=${total}&cu=INR%0A%0A +
-                      _ਕਿਰਪਾ ਕਰਕੇ ਇਸ ਮੈਸੇਜ ਨੂੰ ਭੇਜ ਕੇ ਆਪਣਾ ਆਰਡਰ ਕਨਫਰਮ ਕਰੋ।_;
+      var textMsg = "Nawa Order - OneGrade Foods\n" +
+                    "----------------------------\n" +
+                    "Gahak da Naam: " + name + "\n" +
+                    "Phone: " + phone + "\n" +
+                    "Pata: " + address + "\n" +
+                    "Area: Bathinda & Surrounding 50km\n" +
+                    "----------------------------\n" +
+                    "Order Type: " + orderType + "\n" +
+                    "Product: " + product + "\n" +
+                    "Quantity: " + qty + " Kg\n" +
+                    "Kul Rakam: Rs " + total + "\n" +
+                    "----------------------------\n" +
+                    "Payment Link (UPI): upi://pay?pa=9115157413@upi&pn=OneGradeFoods&am=" + total + "&cu=INR\n\n" +
+                    "Order confirm karan lai eh message send karo.";
 
-      window.open(https://wa.me/${businessNumber}?text=${message}, '_blank');
+      var encodedMsg = encodeURIComponent(textMsg);
+      var waUrl = "https://api.whatsapp.com/send?phone=" + businessNumber + "&text=" + encodedMsg;
+      
+      window.location.href = waUrl;
     }
   </script>
 
