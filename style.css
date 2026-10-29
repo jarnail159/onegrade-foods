@@ -1,58 +1,92 @@
-<!DOCTYPE html>
-<html lang="pa">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OneGrade Foods - Pure Stone Ground Spices</title>
-    
-    <!-- ========================================== -->
-    <!-- ਇੱਥੇ style.css ਫਾਈਲ ਦਾ ਲਿੰਕ ਦਿੱਤਾ ਗਿਆ ਹੈ -->
-    <link rel="stylesheet" href="style.css">
-    <!-- ========================================== -->
-    
-</head>
-<body>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-    <!-- ਹੈਡਰ ਸੈਕਸ਼ਨ -->
-    <header>
-        <h1>OneGrade Foods</h1>
-        <div class="tagline">Pure Stone Ground Spices</div>
-    </header>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fdfaf6;
+    color: #333;
+    line-height: 1.6;
+}
 
-    <!-- ਮੁੱਖ ਸਮੱਗਰੀ (Main Content) -->
-    <main class="container">
-        
-        <div class="product-grid">
-            
-            <!-- ਪ੍ਰੋਡਕਟ ਕਾਰਡ 1 -->
-            <div class="card">
-                <h2>ਹਲਦੀ ਪਾਊਡਰ</h2>
-                <p>ਸ਼ੁੱਧ ਪੱਥਰ 'ਤੇ ਪੀਸੀ ਹੋਈ ਹਲਦੀ, ਜੋ ਤੁਹਾਡੇ ਖਾਣੇ ਨੂੰ ਰੰਗ ਅਤੇ ਸਿਹਤ ਦੋਵੇਂ ਦੇਵੇਗੀ।</p>
-                <a href="#" class="btn">ਖਰੀਦੋ</a>
-            </div>
+header {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 25px 15px;
+    border-bottom: 3px solid #b33927;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
 
-            <!-- ਪ੍ਰੋਡਕਟ ਕਾਰਡ 2 -->
-            <div class="card">
-                <h2>ਲਾਲ ਮਿਰਚ</h2>
-                <p>ਤੀਖੀ ਅਤੇ ਸੁਆਦੀ ਲਾਲ ਮਿਰਚ, ਜੋ ਤੁਹਾਡੇ ਖਾਣੇ ਦਾ ਸਵਾਦ ਦੁੱਗਣਾ ਕਰ ਦੇਵੇਗੀ।</p>
-                <a href="#" class="btn">ਖਰੀਦੋ</a>
-            </div>
+header h1 {
+    color: #b33927;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
 
-            <!-- ਪ੍ਰੋਡਕਟ ਕਾਰਡ 3 -->
-            <div class="card">
-                <h2>ਗਰਮ ਮਸਾਲਾ</h2>
-                <p>ਦੇਸੀ ਮਸਾਲਿਆਂ ਦਾ ਸ਼ੁੱਧ ਮਿਸ਼ਰਣ, ਜੋ ਹਰ ਸਬਜ਼ੀ ਦਾ ਸਵਾਦ ਵਧਾ ਦੇਵੇਗਾ।</p>
-                <a href="#" class="btn">ਖਰੀਦੋ</a>
-            </div>
+.tagline {
+    font-size: 14px;
+    color: #666;
+    text-transform: uppercase;
+}
 
-        </div>
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
 
-    </main>
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
 
-    <!-- ਫੁਟਰ ਸੈਕਸ਼ਨ -->
-    <footer>
-        <p>&copy; 2024 OneGrade Foods. ਸਾਰੇ ਹੱਕ ਰਾਖਵੇਂ ਹਨ।</p>
-    </footer>
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border: 1px solid #f0e6db;
+    text-align: center;
+    padding: 20px;
+}
 
-</body>
-</html>
+.card h2 {
+    color: #b33927;
+    font-size: 22px;
+    margin-bottom: 15px;
+    border-bottom: 1px dashed #ddd;
+    padding-bottom: 10px;
+}
+
+.card p {
+    color: #555;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #b33927;
+    color: #ffffff;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #8c271a;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    margin-top: 40px;
+    font-size: 14px;
+}
