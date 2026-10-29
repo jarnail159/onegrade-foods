@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneGrade Foods - Pure Stone Ground Spices</title>
+    
+    <!-- ========================================== -->
+    <!-- ਇੱਥੇ style.css ਫਾਈਲ ਦਾ ਲਿੰਕ ਦਿੱਤਾ ਗਿਆ ਹੈ -->
+    <link rel="stylesheet" href="style.css">
+    <!-- ========================================== -->
+    
+</head>
+<body>
+
+    <!-- ਹੈਡਰ ਸੈਕਸ਼ਨ -->
+    <header>
+        <h1>OneGrade Foods</h1>
+        <div class="tagline">Pure Stone Ground Spices</div>
+    </header>
+
+    <!-- ਮੁੱਖ ਸਮੱਗਰੀ (Main Content) -->
+    <main class="container">
+        
+        <div class="product-grid">
+            
+            <!-- ਪ੍ਰੋਡਕਟ ਕਾਰਡ 1 -->
+            <div class="card">
+                <h2>ਹਲਦੀ ਪਾਊਡਰ</h2>
+                <p>ਸ਼ੁੱਧ ਪੱਥਰ 'ਤੇ ਪੀਸੀ ਹੋਈ ਹਲਦੀ, ਜੋ ਤੁਹਾਡੇ ਖਾਣੇ ਨੂੰ ਰੰਗ ਅਤੇ ਸਿਹਤ ਦੋਵੇਂ ਦੇਵੇਗੀ।</p>
+                <a href="#" class="btn">ਖਰੀਦੋ</a>
+            </div>
+
+            <!-- ਪ੍ਰੋਡਕਟ ਕਾਰਡ 2 -->
+            <div class="card">
+                <h2>ਲਾਲ ਮਿਰਚ</h2>
+                <p>ਤੀਖੀ ਅਤੇ ਸੁਆਦੀ ਲਾਲ ਮਿਰਚ, ਜੋ ਤੁਹਾਡੇ ਖਾਣੇ ਦਾ ਸਵਾਦ ਦੁੱਗਣਾ ਕਰ ਦੇਵੇਗੀ।</p>
+                <a href="#" class="btn">ਖਰੀਦੋ</a>
+            </div>
+
+            <!-- ਪ੍ਰੋਡਕਟ ਕਾਰਡ 3 -->
+            <div class="card">
+                <h2>ਗਰਮ ਮਸਾਲਾ</h2>
+                <p>ਦੇਸੀ ਮਸਾਲਿਆਂ ਦਾ ਸ਼ੁੱਧ ਮਿਸ਼ਰਣ, ਜੋ ਹਰ ਸਬਜ਼ੀ ਦਾ ਸਵਾਦ ਵਧਾ ਦੇਵੇਗਾ।</p>
+                <a href="#" class="btn">ਖਰੀਦੋ</a>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- ਫੁਟਰ ਸੈਕਸ਼ਨ -->
+    <footer>
+        <p>&copy; 2024 OneGrade Foods. ਸਾਰੇ ਹੱਕ ਰਾਖਵੇਂ ਹਨ।</p>
+    </footer>
+
+</body>
+</html>
