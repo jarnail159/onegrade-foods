@@ -1,58 +1,635 @@
 <!DOCTYPE html>
 <html lang="pa">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OneGrade Foods - Pure Stone Ground Spices</title>
-    
-    <!-- ========================================== -->
-    <!-- ਇੱਥੇ style.css ਫਾਈਲ ਦਾ ਲਿੰਕ ਦਿੱਤਾ ਗਿਆ ਹੈ -->
-    <link rel="stylesheet" href="style.css">
-    <!-- ========================================== -->
-    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OneGrade Foods - Pure Stone Ground Spices</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #b33927;
+    --primary-dark: #8f2a1d;
+    --green: #25d366;
+    --green-dark: #1eb956;
+    --bg: #fdfaf6;
+    --card: #ffffff;
+    --text: #2d2d2d;
+    --muted: #777;
+    --border: #e5ddd5;
+    --shadow: 0 4px 20px rgba(179, 57, 39, 0.08);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 15px;
+    background: linear-gradient(180deg, #fdfaf6 0%, #f9f0e9 100%);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    padding: 20px 15px;
+    margin-bottom: 5px;
+  }
+
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .logo-icon {
+    width: 46px;
+    height: 46px;
+    background: linear-gradient(135deg, var(--primary), #d4694f);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(179, 57, 39, 0.3);
+  }
+
+  h1 {
+    margin: 0;
+    color: var(--primary);
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .tagline {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 8px;
+    font-weight: 500;
+  }
+
+  .trust-bar {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    font-size: 11.5px;
+    color: #2e7d32;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 16px;
+    margin: 16px auto;
+    max-width: 480px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(229, 221, 213, 0.6);
+    animation: fadeUp 0.4s ease;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-title {
+    margin: 0 0 14px;
+    color: var(--primary);
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--border);
+  }
+
+  .section-title .icon { font-size: 18px; }
+
+  label {
+    font-weight: 600;
+    font-size: 13px;
+    display: block;
+    margin-top: 14px;
+    color: #444;
+  }
+
+  select, input, textarea {
+    width: 100%;
+    padding: 12px 14px;
+    margin-top: 6px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    background: #fff;
+    transition: all 0.2s;
+    color: var(--text);
+  }
+
+  select:focus, input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(179, 57, 39, 0.1);
+  }
+
+  textarea { resize: vertical; min-height: 65px; }
+
+  /* BADGE */
+  .badge {
+    background: linear-gradient(135deg, #e8f5e9, #d4edda);
+    color: #1b5e20;
+    padding: 11px;
+    border-radius: 10px;
+    font-size: 12.5px;
+    margin-bottom: 14px;
+    text-align: center;
+    font-weight: 600;
+    border: 1px solid #c8e6c9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  /* QTY CONTROLS */
+  .qty-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .qty-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    border: 1.5px solid var(--border);
+    background: #fff;
+    color: var(--primary);
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    user-select: none;
+    flex-shrink: 0;
+  }
+
+  .qty-btn:hover { background: #fbeee8; border-color: var(--primary); }
+  .qty-btn:active { transform: scale(0.94); }
+
+  #qty {
+    text-align: center;
+    font-weight: 700;
+    font-size: 17px;
+    margin-top: 0;
+    padding: 10px;
+    flex: 1;
+    -moz-appearance: textfield;
+  }
+
+  #qty::-webkit-outer-spin-button,
+  #qty::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+  /* TOTAL BOX */
+  .total-box {
+    background: linear-gradient(135deg, #fbeee8, #f8e2d8);
+    padding: 16px;
+    border-radius: 12px;
+    text-align: center;
+    margin: 18px 0 4px;
+    border: 1.5px solid #f2c7b5;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .total-box::before {
+    content: "💰";
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    opacity: 0.25;
+  }
+
+  .total-label {
+    font-size: 12px;
+    color: #8f5a45;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  .total-price {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary);
+    display: block;
+    margin-top: 4px;
+    transition: transform 0.2s;
+  }
+
+  .total-price.bump { animation: bump 0.3s ease; }
+
+  @keyframes bump {
+    50% { transform: scale(1.12); }
+  }
+
+  .savings-tag {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 11.5px;
+    background: #2e7d32;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    display: none;
+  }
+
+  /* BUTTONS */
+  .btn {
+    background: linear-gradient(135deg, var(--green), var(--green-dark));
+    color: white;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 16px;
+    font-family: inherit;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45); }
+  .btn:active { transform: translateY(0); }
+
+  .btn-outline {
+    background: #fff;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    box-shadow: none;
+    margin-top: 10px;
+  }
+
+  .btn-outline:hover { background: #fbeee8; box-shadow: none; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 20px 10px 30px;
+    font-size: 12px;
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  footer strong { color: var(--primary); }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #2d2d2d;
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 30px;
+    font-size: 13.5px;
+    font-weight: 500;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    opacity: 0;
+    transition: all 0.35s ease;
+    z-index: 999;
+    max-width: 90%;
+    text-align: center;
+  }
+
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .toast.error { background: #c62828; }
+
+  /* VALIDATION */
+  .field-error { border-color: #e53935 !important; background: #fff5f5; }
+
+  /* BULK BANNER */
+  .bulk-banner {
+    display: none;
+    background: #fff8e1;
+    border: 1px solid #ffe082;
+    color: #e65100;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 9px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 400px) {
+    h1 { font-size: 22px; }
+    .card { padding: 16px; }
+    .total-price { font-size: 24px; }
+  }
+</style>
 </head>
 <body>
 
-    <!-- ਹੈਡਰ ਸੈਕਸ਼ਨ -->
-    <header>
-        <h1>OneGrade Foods</h1>
-        <div class="tagline">Pure Stone Ground Spices</div>
-    </header>
+<header>
+  <div class="logo-wrap">
+    <div class="logo-icon">1</div>
+    <h1>OneGrade Foods</h1>
+  </div>
+  <p class="tagline">Pure Stone Ground Spices • Bathinda &amp; 50km Delivery</p>
+  <div class="trust-bar">
+    <span class="trust-item">✓ 100% Pure</span>
+    <span class="trust-item">✓ Stone Ground</span>
+    <span class="trust-item">✓ Fast Delivery</span>
+  </div>
+</header>
 
-    <!-- ਮੁੱਖ ਸਮੱਗਰੀ (Main Content) -->
-    <main class="container">
-        
-        <div class="product-grid">
-            
-            <!-- ਪ੍ਰੋਡਕਟ ਕਾਰਡ 1 -->
-            <div class="card">
-                <h2>ਹਲਦੀ ਪਾਊਡਰ</h2>
-                <p>ਸ਼ੁੱਧ ਪੱਥਰ 'ਤੇ ਪੀਸੀ ਹੋਈ ਹਲਦੀ, ਜੋ ਤੁਹਾਡੇ ਖਾਣੇ ਨੂੰ ਰੰਗ ਅਤੇ ਸਿਹਤ ਦੋਵੇਂ ਦੇਵੇਗੀ।</p>
-                <a href="#" class="btn">ਖਰੀਦੋ</a>
-            </div>
+<!-- ORDER CARD -->
+<div class="card">
+  <div class="badge">🚚 Free / Fast Doorstep Delivery in Bathinda &amp; 50km radius</div>
 
-            <!-- ਪ੍ਰੋਡਕਟ ਕਾਰਡ 2 -->
-            <div class="card">
-                <h2>ਲਾਲ ਮਿਰਚ</h2>
-                <p>ਤੀਖੀ ਅਤੇ ਸੁਆਦੀ ਲਾਲ ਮਿਰਚ, ਜੋ ਤੁਹਾਡੇ ਖਾਣੇ ਦਾ ਸਵਾਦ ਦੁੱਗਣਾ ਕਰ ਦੇਵੇਗੀ।</p>
-                <a href="#" class="btn">ਖਰੀਦੋ</a>
-            </div>
+  <div class="section-title"><span class="icon">🛒</span> Order Details</div>
 
-            <!-- ਪ੍ਰੋਡਕਟ ਕਾਰਡ 3 -->
-            <div class="card">
-                <h2>ਗਰਮ ਮਸਾਲਾ</h2>
-                <p>ਦੇਸੀ ਮਸਾਲਿਆਂ ਦਾ ਸ਼ੁੱਧ ਮਿਸ਼ਰਣ, ਜੋ ਹਰ ਸਬਜ਼ੀ ਦਾ ਸਵਾਦ ਵਧਾ ਦੇਵੇਗਾ।</p>
-                <a href="#" class="btn">ਖਰੀਦੋ</a>
-            </div>
+  <label for="orderType">Order Type:</label>
+  <select id="orderType" onchange="calculateTotal()">
+    <option value="Retail">Retail (Ghar de lai)</option>
+    <option value="Bulk">Bulk / Wholesale (Dukan / Hotel)</option>
+  </select>
 
-        </div>
+  <div class="bulk-banner" id="bulkBanner">🎉 10kg+ Bulk order par 10% discount automatic lag raha hai!</div>
 
-    </main>
+  <label for="product">Select Spice:</label>
+  <select id="product" onchange="calculateTotal()">
+    <option value="Haldi Powder" data-price="260">Haldi Powder — ₹260/kg</option>
+    <option value="Mirch Powder" data-price="320">Mirch Powder — ₹320/kg</option>
+    <option value="Dhaniya Powder" data-price="240">Dhaniya Powder — ₹240/kg</option>
+    <option value="Garam Masala" data-price="650">Garam Masala Special — ₹650/kg</option>
+  </select>
 
-    <!-- ਫੁਟਰ ਸੈਕਸ਼ਨ -->
-    <footer>
-        <p>&copy; 2024 OneGrade Foods. ਸਾਰੇ ਹੱਕ ਰਾਖਵੇਂ ਹਨ।</p>
-    </footer>
+  <label for="qty">Quantity (in Kg):</label>
+  <div class="qty-wrap">
+    <button type="button" class="qty-btn" onclick="changeQty(-1)" aria-label="Decrease">−</button>
+    <input type="number" id="qty" min="1" value="1" oninput="calculateTotal()" onchange="calculateTotal()">
+    <button type="button" class="qty-btn" onclick="changeQty(1)" aria-label="Increase">+</button>
+  </div>
+
+  <div class="total-box">
+    <span class="total-label">Kul Rakam (Total)</span>
+    <span class="total-price" id="totalDisplay">₹260</span>
+    <span class="savings-tag" id="savingsTag"></span>
+  </div>
+</div>
+
+<!-- CUSTOMER CARD -->
+<div class="card">
+  <div class="section-title"><span class="icon">👤</span> Customer Details</div>
+
+  <label for="custName">Pura Naam:</label>
+  <input type="text" id="custName" placeholder="Tuhada Naam" autocomplete="name">
+
+  <label for="custPhone">Mobile Number:</label>
+  <input type="tel" id="custPhone" placeholder="10-digit Mobile Number" inputmode="numeric" maxlength="10" autocomplete="tel">
+
+  <label for="custAddress">Pura Pata (Address):</label>
+  <textarea id="custAddress" placeholder="Gali, Mohalla/Pind, Bathinda ya 50km da area" rows="3" autocomplete="street-address"></textarea>
+
+  <button type="button" class="btn" onclick="sendOrder()">
+    <span>📲</span> Order via WhatsApp
+  </button>
+
+  <button type="button" class="btn btn-outline" onclick="callBusiness()">
+    <span>📞</span> Call karo
+  </button>
+</div>
+
+<footer>
+  <strong>OneGrade Foods</strong> — Pure Stone Ground Spices<br>
+  Bathinda &amp; Surrounding 50km • Order direct on WhatsApp
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const BUSINESS_NUMBER = "919115157413";
+  const UPI_ID = "9115157413@upi";
+
+  /* ---------- TOAST ---------- */
+  let toastTimer;
+  function showToast(msg, isError = false) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'toast show' + (isError ? ' error' : '');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { t.className = 'toast'; }, 2800);
+  }
+
+  /* ---------- QTY CONTROLS ---------- */
+  function changeQty(delta) {
+    const qtyEl = document.getElementById('qty');
+    let val = parseInt(qtyEl.value) || 1;
+    val = Math.max(1, val + delta);
+    qtyEl.value = val;
+    calculateTotal();
+  }
+
+  /* ---------- TOTAL CALC ---------- */
+  let lastTotal = 0;
+  function calculateTotal() {
+    const productSelect = document.getElementById('product');
+    const selectedOption = productSelect.options[productSelect.selectedIndex];
+    const pricePerKg = parseFloat(selectedOption.getAttribute('data-price')) || 0;
+    const qty = Math.max(1, parseFloat(document.getElementById('qty').value) || 1);
+    const orderType = document.getElementById('orderType').value;
+
+    let total = pricePerKg * qty;
+    let originalTotal = total;
+    let discounted = false;
+
+    if (orderType === "Bulk" && qty >= 10) {
+      total = total * 0.90;
+      discounted = true;
+    }
+
+    total = Math.round(total);
+    originalTotal = Math.round(originalTotal);
+
+    const display = document.getElementById('totalDisplay');
+    display.innerText = "₹" + total.toLocaleString('en-IN');
+
+    // bump animation
+    if (total !== lastTotal) {
+      display.classList.remove('bump');
+      void display.offsetWidth;
+      display.classList.add('bump');
+      lastTotal = total;
+    }
+
+    // savings tag
+    const savingsTag = document.getElementById('savingsTag');
+    if (discounted) {
+      savingsTag.style.display = 'inline-block';
+      savingsTag.innerText = "You save ₹" + (originalTotal - total).toLocaleString('en-IN');
+    } else {
+      savingsTag.style.display = 'none';
+    }
+
+    // bulk banner toggle
+    document.getElementById('bulkBanner').style.display =
+      (orderType === "Bulk") ? 'block' : 'none';
+
+    return total;
+  }
+
+  /* ---------- VALIDATION ---------- */
+  function validateField(el, condition) {
+    if (condition) {
+      el.classList.remove('field-error');
+      return true;
+    } else {
+      el.classList.add('field-error');
+      return false;
+    }
+  }
+
+  function validateForm() {
+    const name = document.getElementById('custName');
+    const phone = document.getElementById('custPhone');
+    const address = document.getElementById('custAddress');
+
+    const okName = validateField(name, name.value.trim().length >= 2);
+    const phoneVal = phone.value.trim().replace(/\D/g, '');
+    const okPhone = validateField(phone, phoneVal.length === 10);
+    const okAddr = validateField(address, address.value.trim().length >= 5);
+
+    if (!okName) { showToast("Kripya pura naam bharo!", true); name.focus(); return null; }
+    if (!okPhone) { showToast("10-digit sahi mobile number bharo!", true); phone.focus(); return null; }
+    if (!okAddr) { showToast("Pura pata (address) bharo!", true); address.focus(); return null; }
+
+    return { name: name.value.trim(), phone: phoneVal, address: address.value.trim() };
+  }
+
+  /* ---------- PHONE INPUT SANITIZE ---------- */
+  document.getElementById('custPhone').addEventListener('input', function (e) {
+    this.value = this.value.replace(/\D/g, '').slice(0, 10);
+    this.classList.remove('field-error');
+  });
+
+  /* ---------- ORDER ID ---------- */
+  function generateOrderId() {
+    const d = new Date();
+    const pad = n => String(n).padStart(2, '0');
+    const stamp = `${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}-${pad(d.getHours())}${pad(d.getMinutes())}`;
+    const rand = Math.floor(Math.random() * 900 + 100);
+    return `OG-${stamp}-${rand}`;
+  }
+
+  /* ---------- SEND ORDER ---------- */
+  function sendOrder() {
+    const data = validateForm();
+    if (!data) return;
+
+    const product = document.getElementById('product').value;
+    const qty = Math.max(1, parseInt(document.getElementById('qty').value) || 1);
+    const orderType = document.getElementById('orderType').value;
+    const total = calculateTotal();
+    const orderId = generateOrderId();
+    const now = new Date();
+    const timeStr = now.toLocaleString('en-IN', { hour12: true });
+
+    const textMsg =
+      `*🛒 Nawa Order - OneGrade Foods*\n` +
+      `*Order ID:* ${orderId}\n` +
+      `━━━━━━━━━━━━━━━\n` +
+      `*👤 Gahak da Naam:* ${data.name}\n` +
+      `*📞 Phone:* ${data.phone}\n` +
+      `*📍 Pata:* ${data.address}\n` +
+      `*🗺️ Area:* Bathinda & Surrounding 50km\n` +
+      `━━━━━━━━━━━━━━━\n` +
+      `*📦 Order Type:* ${orderType}\n` +
+      `*🌶️ Product:* ${product}\n` +
+      `*⚖️ Quantity:* ${qty} Kg\n` +
+      `*💰 Kul Rakam:* ₹${total.toLocaleString('en-IN')}\n` +
+      `━━━━━━━━━━━━━━━\n` +
+      `*💳 Payment Link (UPI):*\n` +
+      `upi://pay?pa=${UPI_ID}&pn=OneGradeFoods&am=${total}&cu=INR&tn=Order ${orderId}\n\n` +
+      `*🕐 Order Time:* ${timeStr}\n` +
+      `_Order confirm karan lai eh message send karo._`;
+
+    const encodedMsg = encodeURIComponent(textMsg);
+    const waUrl = `https://api.whatsapp.com/send?phone=${BUSINESS_NUMBER}&text=${encodedMsg}`;
+
+    showToast("WhatsApp khul raha hai... ✅");
+    setTimeout(() => { window.location.href = waUrl; }, 400);
+  }
+
+  /* ---------- CALL ---------- */
+  function callBusiness() {
+    window.location.href = "tel:+" + BUSINESS_NUMBER;
+  }
+
+  /* ---------- AUTOMATION: Prefill from localStorage ---------- */
+  (function prefillFromStorage() {
+    try {
+      const saved = JSON.parse(localStorage.getItem('og_customer') || '{}');
+      if (saved.name) document.getElementById('custName').value = saved.name;
+      if (saved.phone) document.getElementById('custPhone').value = saved.phone;
+      if (saved.address) document.getElementById('custAddress').value = saved.address;
+    } catch (e) {}
+  })();
+
+  /* ---------- AUTOMATION: Save customer on input ---------- */
+  ['custName', 'custPhone', 'custAddress'].forEach(id => {
+    document.getElementById(id).addEventListener('blur', function () {
+      const data = {
+        name: document.getElementById('custName').value.trim(),
+        phone: document.getElementById('custPhone').value.trim(),
+        address: document.getElementById('custAddress').value.trim()
+      };
+      try { localStorage.setItem('og_customer', JSON.stringify(data)); } catch (e) {}
+    });
+  });
+
+  /* ---------- AUTOMATION: Keyboard focus flow ---------- */
+  document.getElementById('custName').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); document.getElementById('custPhone').focus(); }
+  });
+  document.getElementById('custPhone').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); document.getElementById('custAddress').focus(); }
+  });
+
+  /* ---------- INIT ---------- */
+  calculateTotal();
+</script>
 
 </body>
 </html>
