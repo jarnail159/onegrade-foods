@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OneGrade Foods - Pure Stone Ground Spices</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<!-- QR Code Library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
   :root {
@@ -74,7 +73,6 @@
     display: flex; align-items: center; justify-content: center; gap: 6px;
   }
 
-  /* --- IMAGE GALLERY SECTION --- */
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -107,7 +105,6 @@
     background: #fdfaf6;
   }
 
-  /* --- NEW: QR CODE SECTION --- */
   .qr-section {
     text-align: center;
     padding: 10px 0;
@@ -140,7 +137,6 @@
   }
   .download-btn:hover { background: #e0e0e0; }
 
-  /* QR Zoom Modal */
   .qr-modal {
     display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0,0,0,0.85); z-index: 1000;
@@ -245,7 +241,6 @@
   </div>
 </header>
 
-<!-- NEW: QR CODE SECTION -->
 <div class="card">
   <div class="section-title"><span class="icon">📱</span> Scan to Order (QR Code)</div>
   <div class="qr-section">
@@ -259,7 +254,6 @@
   </div>
 </div>
 
-<!-- PRODUCT GALLERY SECTION -->
 <div class="card">
   <div class="section-title"><span class="icon">✨</span> Sade Masale (Our Spices)</div>
   <div class="gallery-grid">
@@ -282,7 +276,6 @@
   </div>
 </div>
 
-<!-- ORDER CARD -->
 <div class="card">
   <div class="badge">🚚 Free / Fast Doorstep Delivery in Bathinda &amp; 50km radius</div>
 
@@ -318,7 +311,6 @@
   </div>
 </div>
 
-<!-- CUSTOMER CARD -->
 <div class="card" id="customerCard">
   <div class="section-title"><span class="icon">👤</span> Customer Details</div>
 
@@ -345,7 +337,6 @@
   Bathinda &amp; Surrounding 50km • Order direct on WhatsApp
 </footer>
 
-<!-- QR MODAL (ZOOM) -->
 <div class="qr-modal" id="qrModal" onclick="closeQRModal()">
   <span class="close-modal">&times;</span>
   <img id="modalQrImg" src="" alt="QR Code">
@@ -355,27 +346,25 @@
 <div class="toast" id="toast"></div>
 
 <script>
+  // Yahan maine aapka GitHub link daal diya hai
+  const WEBSITE_URL = "https://jarnail159.github.io/onegrade-foods/";
+  
   const BUSINESS_NUMBER = "919115157413";
   const UPI_ID = "9115157413@upi";
-  
-  // APNA WEBSITE LINK YAHAN PAYO:
-  const WEBSITE_URL = "https://onegradefoods.com"; // <-- CHANGE THIS LINK
 
-  /* --- QR CODE GENERATION --- */
   function generateQR() {
     const qrContainer = document.getElementById('qrcode');
-    qrContainer.innerHTML = ""; // clear previous
+    qrContainer.innerHTML = ""; 
     new QRCode(qrContainer, {
       text: WEBSITE_URL,
       width: 140,
       height: 140,
-      colorDark : "#b33927", // Primary color
+      colorDark : "#b33927",
       colorLight : "#ffffff",
       correctLevel : QRCode.CorrectLevel.H
     });
   }
 
-  /* --- OPEN MODAL --- */
   function openQRModal() {
     const qrImg = document.querySelector('#qrcode img');
     if (qrImg) {
@@ -384,12 +373,10 @@
     }
   }
 
-  /* --- CLOSE MODAL --- */
   function closeQRModal() {
     document.getElementById('qrModal').classList.remove('show');
   }
 
-  /* --- DOWNLOAD QR --- */
   function downloadQR() {
     const qrImg = document.querySelector('#qrcode img');
     if (qrImg) {
@@ -401,7 +388,6 @@
     }
   }
 
-  /* --- TOAST --- */
   let toastTimer;
   function showToast(msg, isError = false) {
     const t = document.getElementById('toast');
@@ -411,7 +397,6 @@
     toastTimer = setTimeout(() => { t.className = 'toast'; }, 2800);
   }
 
-  /* --- QTY CONTROLS --- */
   function changeQty(delta) {
     const qtyEl = document.getElementById('qty');
     let val = parseInt(qtyEl.value) || 1;
@@ -440,9 +425,8 @@
     let originalTotal = total;
     let discounted = false;
 
-    // Discount applies ONLY for Bulk + 10Kg or more
     if (orderType === "Bulk" && qty >= 10) {
-      total = total * 0.90; // 10% off
+      total = total * 0.90; 
       discounted = true;
     }
 
@@ -472,7 +456,6 @@
     return total;
   }
 
-  /* --- FORM VALIDATION --- */
   function validateField(el, condition) {
     if (condition) {
       el.classList.remove('field-error');
@@ -505,16 +488,14 @@
     this.classList.remove('field-error');
   });
 
-  /* --- ORDER ID --- */
   function generateOrderId() {
     const d = new Date();
     const pad = n => String(n).padStart(2, '0');
-    const stamp = `${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}-${pad(d.getHours())}${pad(d.getMinutes())}`;
+    const stamp = ${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}-${pad(d.getHours())}${pad(d.getMinutes())};
     const rand = Math.floor(Math.random() * 900 + 100);
-    return `OG-${stamp}-${rand}`;
+    return OG-${stamp}-${rand};
   }
 
-  /* --- SEND ORDER --- */
   function sendOrder() {
     const data = validateForm();
     if (!data) {
@@ -530,30 +511,32 @@
     const now = new Date();
     const timeStr = now.toLocaleString('en-IN', { hour12: true });
 
-    let discountMsg = (orderType === "Bulk" && qty >= 10) ? "*(10% Bulk Discount Included)*\n" : "";
+    let discountMsg = (orderType === "Bulk" && qty >= 10) ? "(10% Bulk Discount Included)\n" : "";
 
     const textMsg =
-      `*🛒 Nawa Order - OneGrade Foods*\n` +
-      `*Order ID:* ${orderId}\n` +
-      `━━━━━━━━━━━━━━━\n` +
-      `*👤 Gahak da Naam:* ${data.name}\n` +
-      `*📞 Phone:* ${data.phone}\n` +
-      `*📍 Pata:* ${data.address}\n` +
-      `*🗺️ Area:* Bathinda & Surrounding 50km\n` +
-      `━━━━━━━━━━━━━━━\n` +
-      `*📦 Order Type:* ${orderType}\n` +
-      `*🌶️ Product:* ${product}\n` +
-      `*⚖️ Quantity:* ${qty} Kg\n` +
-      `*💰 Kul Rakam:* ₹${total.toLocaleString('en-IN')}\n` +
+      *🛒 Nawa Order - OneGrade Foods*\n +
+      *Order ID:* ${orderId}\n +
+      ━━━━━━━━━━━━━━━\n +
+      *👤 Gahak da Naam:* ${data.name}\n +
+      *📞 Phone:* ${data.phone}\n +
+      *📍 Pata:* ${data.address}\n +
+      *🗺️ Area:* Bathinda & Surrounding 50km\n +
+      ━━━━━━━━━━━━━━━\n +
+      *📦 Order Type:* ${orderType}\n +
+      *🌶️ Product:* ${product}\n +
+      *⚖️ Quantity:* ${qty} Kg\n +
+      *💰 Kul Rakam:* ₹${total.toLocaleString('en-IN')}\n +
       discountMsg +
-      `━━━━━━━━━━━━━━━\n` +
-      `*💳 Payment Link (UPI):*\n` +
-      `upi://pay?pa=${UPI_ID}&pn=OneGradeFoods&am=${total}&cu=INR&tn=Order ${orderId}\n\n` +
-      `*🕐 Order Time:* ${timeStr}\n` +
-      `_Order confirm karan lai eh message send karo._`;
+      ━━━━━━━━━━━━━━━\n +
+      *💳 Payment Link (UPI):*\n +
+      upi://pay?pa=${UPI_ID}&pn=OneGradeFoods&am=${total}&cu=INR&tn=Order ${orderId}\n\n +
+      *🕐 Order Time:* ${timeStr}\n +
+      _Order confirm karan lai eh message send karo._;
 
     const encodedMsg = encodeURIComponent(textMsg);
-    const waUrl = `https://jarnail159.github.io/onegrade-foods/send?phone=${BUSINESS_NUMBER}&text=${encodedMsg}`;
+    
+    // MAINE YAHAN WHATSAPP KA SAHI LINK WAPAS LAGA DIYA HAI
+    const waUrl = https://api.whatsapp.com/send?phone=${BUSINESS_NUMBER}&text=${encodedMsg};
 
     showToast("WhatsApp khul raha hai... ✅");
     setTimeout(() => { window.location.href = waUrl; }, 500);
@@ -563,7 +546,6 @@
     window.location.href = "tel:+" + BUSINESS_NUMBER;
   }
 
-  /* --- PREFILL & SAVE --- */
   (function prefillFromStorage() {
     try {
       const saved = JSON.parse(localStorage.getItem('og_customer') || '{}');
@@ -591,7 +573,6 @@
     if (e.key === 'Enter') { e.preventDefault(); document.getElementById('custAddress').focus(); }
   });
 
-  /* --- INIT --- */
   window.onload = function() {
     generateQR();
     calculateTotal();
